@@ -1,0 +1,24 @@
+Virtual environment: A virtual environment is a tool that helps to keep dependencies required by different projects separate by creating isolated python virtual environments for them.
+
+					Installing virtualenv
+
+						$ pip install virtualenv
+
+					Test your installation:
+
+						$ virtualenv --version
+
+					Using virtualenv: You can create a virtualenv using the following command:
+
+						$ virtualenv my_name
+					
+					To activate the relevant virtual environment every time you work on the project:
+						$ source virtualenv_name/bin/activate
+					
+					Deactivate the virtual environment by the following command:
+
+						(virtualenv_name)$ deactivate
+
+					
+
+

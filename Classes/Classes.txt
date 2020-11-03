@@ -1,0 +1,137 @@
+Classes:
+
+Class and instance variables:  In Python, class definitions begin with a class keyword.
+
+								Code:
+									class Person:
+										"This is a person class"
+										age = 10
+
+										def greet(self):
+											print('Hello')
+
+									print(Person.age)
+									print(Person.greet)
+									print(Person.__doc__)
+									
+									Output:									
+									10
+									<function Person.greet at 0x7fc78c6e8160>
+									This is a person class
+
+Class variable: Class variables are defined within the class construction. Because they are owned by the class itself, class variables are shared by all instances of the class.
+
+Instance variable: Instance variables are owned by instances of the class. This means that for each object or instance of a class, the instance variables are different. 
+
+					Code:
+					 class Shark:
+
+						# Class variables
+						animal_type = "fish"
+						location = "ocean"
+
+						# Constructor method with instance variables name and age
+						def __init__(self, name, age):
+							self.name = name
+							self.age = age
+
+						# Method with instance variable followers
+						def set_followers(self, followers):
+							print("This user has " + str(followers) + " followers")
+
+
+					def main():
+						# First object, set up instance variables of constructor method
+						sammy = Shark("Sammy", 5)
+
+						# Print out instance variable name
+						print(sammy.name)
+
+						# Print out class variable location
+						print(sammy.location)
+
+						# Second object
+						stevie = Shark("Stevie", 8)
+
+						# Print out instance variable name
+						print(stevie.name)
+
+						# Use set_followers method and pass followers instance variable
+						stevie.set_followers(77)
+
+						# Print out class variable animal_type
+						print(stevie.animal_type)
+
+					if __name__ == "__main__":
+						main()
+						
+				Output
+					Sammy
+					ocean
+					Stevie
+					This user has 77 followers
+					fish		
+
+
+Private Variables: Adding two underlines(__) at the beginning makes a variable or a method private is the convention used by most python code. Private variables in python is more or less a hack: the interpreter intentionally renames the variable.
+				Code:
+				class A:
+					def __init__(self):
+						self.__var = 123
+					def printVar(self):
+						print self.__var
+
+				Now, if you try to access __var outside the class definition, it will fail:
+
+				 x = A()
+				 x.__var # this will return error: "A has no attribute __var"
+
+				 x.printVar() # this gives back 123
+
+Inhertiance: Inheritance allows us to define a class that inherits all the methods and properties from another class. Parent class is the class being inherited from, also called base class. Child class is the class that inherits from another class, also called derived class.
+			Code: 
+			class Person:
+			  def __init__(self, fname, lname):
+				self.firstname = fname
+				self.lastname = lname
+
+			  def printname(self):
+				print(self.firstname, self.lastname)
+
+			class Student(Person):
+			  def __init__(self, fname, lname, year):
+				super().__init__(fname, lname)
+				self.birthyear= year
+
+			  def welcome(self):
+				print("Welcome", self.firstname, self.lastname, " born in the year", self.birthyear)
+
+			x = Student("Ram", "mar", 2000)
+			x.welcome()
+			
+			Output:
+			Welcome Ram mar born in the year 2000
+			
+Multiple Inheritance: A class can be derived from more than one base class in Python, similar to C++. This is called multiple inheritance.
+						Code:
+							class Class1: 
+								def m(self): 
+									print("In Class1")  
+									
+							class Class2(Class1): 
+								def m(self): 
+									print("In Class2") 
+							  
+							class Class3(Class1): 
+								def m(self): 
+									print("In Class3")   
+									 
+							class Class4(Class2, Class3): 
+								pass   
+								  
+							obj = Class4() 
+							obj.m() 
+
+							Output:
+
+							In Class2
